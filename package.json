@@ -1,0 +1,40 @@
+{
+  "name": "pulseframe2-server",
+  "version": "1.0.0",
+  "description": "Pulseframe2 REST API Server",
+  "author": "Lucas Jahn <lucas.jahn@hs-augsburg.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luceoon/pulseframe2-server"
+  },
+  "private": true,
+  "prisma": {
+    "seed": "node --require esbuild-register ./prisma/seed.ts"
+  },
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "esbuild --bundle --platform=node --target=node14 --outdir=dist --external:pg --external:prisma --external:prisma/client src/index.ts",
+    "start": "tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.30",
+    "esbuild": "^0.20.2",
+    "esbuild-register": "^3.5.0",
+    "nodemon": "^3.1.0",
+    "prisma": "^5.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
