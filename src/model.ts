@@ -1,20 +1,13 @@
-export type Anim = {
-    id: number;
+export interface AnimData {
     name: string;
     filename: string;
-    created_at: Date;
-    updated_at: Date;
-};
-
-export type PlaylistItem = {
-    id: number;
-    anim_id: number;
+    active: boolean;
     duration: number;
     loop: boolean;
-};
+}
 
-export type Playlist = {
+export interface Anim extends AnimData {
     id: number;
-    name: string;
-    items: PlaylistItem[];
-};
+    createdAt: Date;
+    updatedAt: Date;
+}

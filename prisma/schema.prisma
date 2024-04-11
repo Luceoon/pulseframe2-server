@@ -15,25 +15,11 @@ datasource db {
 
 model Anim {
   id            Int      @id @default(autoincrement())
-  name          String
-  filename      String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  PlaylistItem  PlaylistItem[]
-}
-
-model PlaylistItem {
-  id            Int      @id @default(autoincrement())
-  animId        Int
-  anim          Anim     @relation(fields: [animId], references: [id])
+  name          String   @unique
+  filename      String   @unique
+  active        Boolean
   loop          Boolean
   duration      Int
-  playlistId    Int
-  playlist      Playlist @relation(fields: [playlistId], references: [id])
-}
-
-model Playlist {
-  id            Int      @id @default(autoincrement())
-  name          String
-  items         PlaylistItem[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
